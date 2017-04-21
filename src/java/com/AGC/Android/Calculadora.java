@@ -27,43 +27,32 @@ public class Calculadora {
     public String CalculadoraBasica(@WebParam(name = "Operacion") String Operacion, @WebParam(name = "Numero1") String Numero1, @WebParam(name = "Numero2") String Numero2) {
         //TODO write your implementation code here:
         double N1 = Double.parseDouble(Numero1);
-        double N2 = Double.parseDouble(Numero2);
+        double N2;
         String res = "";
+        if (Numero2.equals("")) {
+            N2 = Double.parseDouble(Numero2);
+        } else {
+            N2 = 0.0;
+        }
         if (Operacion.equals("Suma")) {
             res = "" + (N1 + N2);
         } else if (Operacion.equals("Resta")) {
             res = "" + (N1 - N2);
-        } else if (Operacion.equals("Multiplicacion")) {
+        } else if (Operacion.equals("Mult")) {
             res = "" + (N1 * N2);
-        } else if (Operacion.equals("Divicion")) {
+        } else if (Operacion.equals("Div")) {
             res = "" + (N1 / N2);
-        } else {
-            res = "no prr";
+        } else if (Operacion.equals("Sen")) {
+            res = "" + Math.sin(N1);
+        } else if (Operacion.equals("Cos")) {
+            res = "" + Math.cos(N1);
+        } else if (Operacion.equals("Resi")) {
+            res = "" + (N1 % N2);
+        } else if (Operacion.equals("Raiz")) {
+            res = "" + Math.pow(N1, 1.0 / N2);
+        } else if (Operacion.equals("Potencia")) {
+            res = "" + Math.pow(N1, N2);
         }
         return res;
-    }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    /**
-     * Web service operation
-     */
-    @WebMethod(operationName = "CalculadoraCient")
-    public String CalculadoraCient(@WebParam(name = "Numero1") String Numero1, @WebParam(name = "Numero2") String Numero2, @WebParam(name = "Resultado") String Resultado, @WebParam(name = "Operacion") String Operacion) {
-        double N1 = Double.parseDouble(Numero1);
-        double N2 = Double.parseDouble(Numero2);
-        String res = "";
-        if (Operacion.equals("Suma")) {
-            res = "" + (N1 + N2);
-        } else if (Operacion.equals("Resta")) {
-            res = "" + (N1 - N2);
-        } else if (Operacion.equals("Multiplicacion")) {
-            res = "" + (N1 * N2);
-        } else if (Operacion.equals("Divicion")) {
-            res = "" + (N1 / N2);
-        } else {
-            res = "no prr";
-        }
-        return res;        
     }
 }
